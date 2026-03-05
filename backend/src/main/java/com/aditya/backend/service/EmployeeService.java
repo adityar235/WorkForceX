@@ -23,10 +23,11 @@ public class EmployeeService {
     }
 
     public List<Employee> filterEmployees(String name, String department, String gender) {
-        String nameTrimmed = (name != null && name.isBlank()) ? null : name;
-        String deptTrimmed = (department != null && department.isBlank()) ? null : department;
-        String genTrimmed = (gender != null && gender.isBlank()) ? null : gender;
-        return employeeRepository.findByFilters(nameTrimmed, deptTrimmed, genTrimmed);
+        // Convert empty strings to null so JPQL :param IS NULL check works correctly
+        String nameFinal = (name == null || name.isBlank()) ? null : name.trim();
+        String deptFinal = (department == null || department.isBlank()) ? null : department.trim();
+        String genFinal = (gender == null || gender.isBlank()) ? null : gender.trim();
+        return employeeRepository.findByFilters(nameFinal, deptFinal, genFinal);
     }
 
     public Employee createEmployee(Employee employee) {
