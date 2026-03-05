@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const DEPARTMENTS = ['', 'Engineering', 'HR', 'Finance', 'Marketing', 'Operations', 'Sales']
+const DEPARTMENTS = ['', 'SDE-1', 'SDE-2', 'SDE-3', 'Sales', 'Team Lead', 'Intern',]
 const GENDERS = ['', 'Male', 'Female', 'Other']
 
 export default function SearchFilter({ onApply }) {
